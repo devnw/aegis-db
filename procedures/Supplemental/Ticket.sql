@@ -20,6 +20,7 @@
   AssignedTo          NVARCHAR(255)           NULL
   ReportedBy          NVARCHAR(255)           NULL
   AssignmentGroup     NVARCHAR(255)           NULL
+  GroupID             VARCHAR(100)            NOT
   Labels              NVARCHAR(500)           NULL
   MethodOfDiscovery   NVARCHAR(20)            NULL
   Priority            NVARCHAR(20)            NULL

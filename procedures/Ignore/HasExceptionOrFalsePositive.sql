@@ -33,7 +33,7 @@ CREATE PROCEDURE `HasExceptionOrFalsePositive`(_sourceID VARCHAR(36), _vulnID NV
   WHERE I.SourceId = _sourceID
   and I.OrganizationId = _orgID
   and I.VulnerabilityId = _vulnID
-  and (I.DeviceId = _devID OR (I.DeviceId IS NULL AND ((I.OSRegex IS NOT NULL AND _OS REGEXP I.OSRegex) OR I.OSRegex IS NULL)))
+  and (I.DeviceId = _devID)
   and ((_port <> '' and I.Port = _port) OR _port ='')
   and ((I.TypeId = 1)
        or (I.typeId = 0

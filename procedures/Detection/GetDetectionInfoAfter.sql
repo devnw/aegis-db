@@ -5,6 +5,7 @@
   SourceID            NVARCHAR(36)  NOT
   DeviceID            NVARCHAR(36)  NOT
   VulnerabilityID     NVARCHAR(36)  NOT
+  IgnoreID            VARCHAR(36)   NULL
   AlertDate           DATETIME      NOT
   Proof               NVARCHAR(255) NOT
   Port                INT           NOT
@@ -12,6 +13,7 @@
   ActiveKernel        INT           NULL
   DetectionStatusID   INT           NOT
   TimesSeen           INT           NOT
+  Updated             DATETIME      NOT
 */
 
 DROP PROCEDURE IF EXISTS `GetDetectionInfoAfter`;
@@ -24,12 +26,14 @@ SELECT
     D.SourceID,
     D.DeviceID,
     D.VulnerabilityID,
+    D.IgnoreID,
     D.AlertDate,
     D.Proof,
     D.Port,
     D.Protocol,
     D.ActiveKernel,
     D.DetectionStatusID,
-    D.TimesSeen
+    D.TimesSeen,
+    D.Updated
 FROM Detection D
 WHERE D.OrganizationID = _OrgID AND (D.Updated > _After OR D.Created > _After) ORDER BY Created;
